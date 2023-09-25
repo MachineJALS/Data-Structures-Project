@@ -9,11 +9,11 @@ type Producto struct {
 }
 
 func (p Producto) IncrementarCantidad(c int) {
-	p.Cantidad = p.Cantidad + c
+	p.Cantidad += c
 }
 
 func (p Producto) DisminuirCantidad(c int) {
-	p.Cantidad = p.Cantidad + c
+	p.Cantidad += c
 }
 
 func (p Producto) String() string {
