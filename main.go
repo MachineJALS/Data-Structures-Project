@@ -4,11 +4,13 @@ import (
 	"cmp"
 	"fmt"
 	"mymodule2/empleado"
+	"mymodule2/producto"
 	"slices"
 	"time"
 )
 
 var listaEmpleados = []empleado.Empleado{}
+var listaProductos = []producto.Producto{}
 
 func main() {
 	empleado1 := empleado.Empleado{
@@ -45,6 +47,14 @@ func main() {
 		}},
 	}
 
+	producto1 := producto.Producto{
+		Nombre:   "Bud light",
+		Cantidad: 130,
+	}
+
+	listaProductos = append(listaProductos, producto1)
+	fmt.Printf("%v\n", listaProductos)
+
 	listaEmpleados = append(listaEmpleados, empleado1, empleado2)
 	fmt.Printf("%v\n", listaEmpleados)
 
@@ -59,5 +69,10 @@ func main() {
 	})
 	listaEmpleados = slices.Delete(listaEmpleados, indice, (indice + 1))
 	fmt.Printf("%v\n", listaEmpleados)
+
+	//var cantidad int
+
+	//fmt.Printf("Digite la cantidad de elementos que desea añadir a el producto %v :", p)
+	//fmt.Scan(&cantidad)
 
 }
