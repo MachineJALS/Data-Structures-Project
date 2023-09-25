@@ -48,8 +48,9 @@ func main() {
 	}
 
 	producto1 := producto.Producto{
-		Nombre:   "Bud light",
-		Cantidad: 130,
+		Nombre:    "Bud light",
+		Cantidad:  130,
+		Categoria: "Cerveza",
 	}
 
 	listaProductos = append(listaProductos, producto1)
