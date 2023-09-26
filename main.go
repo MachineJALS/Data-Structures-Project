@@ -3,11 +3,11 @@ package main
 import (
 	"cmp"
 	"fmt"
-	"time"
-
 	"mymodule2/empleado"
 	"mymodule2/producto"
 	"slices"
+	"sort"
+	"time"
 )
 
 var (
@@ -177,7 +177,9 @@ func empleadosMenu() {
 		fmt.Println("1) Añadir empleado")
 		fmt.Println("2) Eliminar empleado")
 		fmt.Println("3) Modificar empleado")
-		fmt.Println("4) Salir al menú principal")
+		fmt.Println("4) Imprimir empleados por ID")
+		fmt.Println("5) Imprimir empleados por Apellido")
+		fmt.Println("6) Salir al menú principal")
 		fmt.Print("Digite una de las opciones: ")
 
 		var opcion int
@@ -191,11 +193,51 @@ func empleadosMenu() {
 		case 3:
 			seleccionarEmpleadoModificar()
 		case 4:
+			fmt.Println("Imprimiendo empleados por ID...")
+			imprimirEmpleadosOrdenadosPorID()
+		case 5:
+			fmt.Println("Imprimiendo empleados por Apellido...")
+			imprimirEmpleadosOrdenadosPorApellido()
+		case 6:
 			fmt.Println("Saliendo al menú principal...")
 			return
 		default:
 			fmt.Println("Opción no válida.")
 		}
+	}
+}
+
+func imprimirEmpleadosOrdenadosPorID() {
+	// Copia la lista de empleados
+	empleadosCopia := make([]empleado.Empleado, len(listaEmpleados))
+	copy(empleadosCopia, listaEmpleados)
+
+	// Ordena la copia por ID
+	sort.Slice(empleadosCopia, func(i, j int) bool {
+		return empleadosCopia[i].Id < empleadosCopia[j].Id
+	})
+
+	// Imprime la lista ordenada por ID
+	fmt.Println("=== Empleados Ordenados por ID ===")
+	for i, e := range empleadosCopia {
+		fmt.Printf("%d) %s %s (ID: %d)\n", i+1, e.Nombre, e.Apellido, e.Id)
+	}
+}
+
+func imprimirEmpleadosOrdenadosPorApellido() {
+	// Copia la lista de empleados
+	empleadosCopia := make([]empleado.Empleado, len(listaEmpleados))
+	copy(empleadosCopia, listaEmpleados)
+
+	// Ordena la copia por Apellido
+	sort.Slice(empleadosCopia, func(i, j int) bool {
+		return empleadosCopia[i].Apellido < empleadosCopia[j].Apellido
+	})
+
+	// Imprime la lista ordenada por Apellido
+	fmt.Println("=== Empleados Ordenados por Apellido ===")
+	for i, e := range empleadosCopia {
+		fmt.Printf("%d) %s %s (Apellido: %s)\n", i+1, e.Nombre, e.Apellido, e.Apellido)
 	}
 }
 
