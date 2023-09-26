@@ -13,11 +13,19 @@ type Insumo struct {
 	Cantidad int
 }
 
-func (p *Producto) IncrementarCantidad(c int) {
+func (i *Insumo) IncrementarCantidadInsumo(c int) {
+	i.Cantidad += c
+}
+
+func (i *Insumo) DisminuirCantidadInsumo(c int) {
+	i.Cantidad -= c
+}
+
+func (p *Producto) IncrementarCantidadProducto(c int) {
 	p.Cantidad += c
 }
 
-func (p *Producto) DisminuirCantidad(c int) {
+func (p *Producto) DisminuirCantidadProducto(c int) {
 	p.Cantidad -= c
 }
 
