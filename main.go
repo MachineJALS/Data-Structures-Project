@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"mymodule2/empleado"
 	"mymodule2/producto"
+	"os"
 	"slices"
 	"time"
 )
@@ -13,6 +14,28 @@ var listaEmpleados = []empleado.Empleado{}
 var listaProductos = []producto.Producto{}
 
 func main() {
+	datosQuemados()
+
+	i := 0
+	for i == 0 {
+		var option int
+		fmt.Print("1)Menu empleados \n2)Menu productos \n3)Salir del programa \nDigite alguna de las opciones: ")
+		fmt.Scan(&option)
+		switch option {
+		case 1:
+			fmt.Print("Entrando al menu de empleados...")
+			//
+		case 2:
+			fmt.Print("Entrando al menu de productos")
+		case 3:
+			fmt.Print("Saliendo del programa")
+			os.Exit(0)
+
+		}
+	}
+}
+
+func datosQuemados() {
 	empleado1 := empleado.Empleado{
 		Id:           1,
 		Nombre:       "a",
@@ -52,8 +75,19 @@ func main() {
 		Cantidad:  130,
 		Categoria: "Cerveza",
 	}
+	producto2 := producto.Producto{
+		Nombre:    "Johnni Walker",
+		Cantidad:  50,
+		Categoria: "Whisky",
+	}
 
-	listaProductos = append(listaProductos, producto1)
+	producto3 := producto.Producto{
+		Nombre:    "Bud light",
+		Cantidad:  132,
+		Categoria: "Cerveza",
+	}
+
+	listaProductos = append(listaProductos, producto1, producto3, producto2)
 	fmt.Printf("%v\n", listaProductos)
 
 	listaEmpleados = append(listaEmpleados, empleado1, empleado2)
