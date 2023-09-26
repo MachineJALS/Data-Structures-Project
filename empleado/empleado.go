@@ -28,7 +28,17 @@ type Empleado struct {
 	DiasTrabajo  []DiaTrabajo
 }
 
-//AñadirEmpleado-EliminarEmpleado-OrdenarEmpleado/PorApellido
+type EmpleadosPorId []Empleado
+
+func (a EmpleadosPorId) Len() int           { return len(a) }
+func (a EmpleadosPorId) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
+func (a EmpleadosPorId) Less(i, j int) bool { return a[i].Id < a[j].Id } //sort.Sort(EmpleadosPorId(empleados))
+
+type EmpleadosPorApellido []Empleado
+
+func (a EmpleadosPorApellido) Len() int           { return len(a) }
+func (a EmpleadosPorApellido) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
+func (a EmpleadosPorApellido) Less(i, j int) bool { return a[i].Apellido < a[j].Apellido } //sort.Sort(EmpleadosPorApellido(empleados))
 
 func (e Empleado) CalcularSalario() (salario float64) {
 	for _, dia := range e.DiasTrabajo {
