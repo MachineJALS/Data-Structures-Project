@@ -3,12 +3,14 @@ package producto
 import "fmt"
 
 type Producto struct {
+	NSerie    int
 	Nombre    string
 	Cantidad  int
 	Categoria string
 }
 
 type Insumo struct {
+	NSerie   int
 	Nombre   string
 	Cantidad int
 }

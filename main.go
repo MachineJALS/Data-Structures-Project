@@ -93,33 +93,39 @@ func datosQuemados() {
 	}
 
 	producto1 := producto.Producto{
+		NSerie:    1,
 		Nombre:    "Bud light",
 		Cantidad:  130,
 		Categoria: "Cerveza",
 	}
 	producto2 := producto.Producto{
+		NSerie:    2,
 		Nombre:    "Johnni Walker",
 		Cantidad:  50,
 		Categoria: "Whisky",
 	}
 
 	producto3 := producto.Producto{
-		Nombre:    "Bud light",
-		Cantidad:  132,
-		Categoria: "Cerveza",
+		NSerie:    3,
+		Nombre:    "Blue Label",
+		Cantidad:  13,
+		Categoria: "Whisky",
 	}
 
 	insumo1 := producto.Insumo{
+		NSerie:   1,
 		Nombre:   "Botellas",
 		Cantidad: 7,
 	}
 
 	insumo2 := producto.Insumo{
+		NSerie:   2,
 		Nombre:   "Tapas",
 		Cantidad: 9,
 	}
 
 	insumo3 := producto.Insumo{
+		NSerie:   3,
 		Nombre:   "Licor",
 		Cantidad: 15,
 	}
