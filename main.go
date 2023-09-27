@@ -1,9 +1,11 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"mymodule2/empleado"
 	"mymodule2/producto"
+	"os"
 	"sort"
 	"time"
 )
@@ -11,6 +13,7 @@ import (
 var (
 	listaEmpleados = []empleado.Empleado{}
 	listaProductos = []producto.Producto{}
+	listaInsumos   = []producto.Insumo{}
 	idEmpleado     int
 )
 
@@ -106,9 +109,30 @@ func datosQuemados() {
 		Categoria: "Cerveza",
 	}
 
+	insumo1 := producto.Insumo{
+		Nombre:   "Botellas",
+		Cantidad: 7,
+	}
+
+	insumo2 := producto.Insumo{
+		Nombre:   "Tapas",
+		Cantidad: 9,
+	}
+
+	insumo3 := producto.Insumo{
+		Nombre:   "Licor",
+		Cantidad: 15,
+	}
+
+	listaInsumos = append(listaInsumos, insumo1, insumo2, insumo3)
+
 	listaProductos = append(listaProductos, producto1, producto3, producto2)
 
 	listaEmpleados = append(listaEmpleados, empleado1, empleado2)
+}
+
+func Supervisor() {
+
 }
 
 func formatProductos(productos []producto.Producto) string {
@@ -247,7 +271,12 @@ func seleccionarEmpleadoModificar() {
 
 		fmt.Print("Ingrese el nuevo apellido para el empleado: ")
 		var nuevoApellido string
-		fmt.Scan(&nuevoApellido)
+		reader := bufio.NewReader(os.Stdin)
+		nuevoApellido, err := reader.ReadString('\n')
+		if err != nil {
+			fmt.Print("Error al leer la entrada:", err)
+			return
+		}
 
 		// Modificar el apellido del empleado seleccionado
 		empleadoSeleccionado.Apellido = nuevoApellido
@@ -304,11 +333,20 @@ func añadirEmpleado() {
 	var salarioHora float64
 	idEmpleado++
 
+	reader := bufio.NewReader(os.Stdin)
+
 	fmt.Print("Ingrese el nombre del empleado: ")
-	fmt.Scan(&nombre)
+	nombre, err := reader.ReadString('\n')
+	if err != nil {
+		fmt.Print("Error al leer la entrada:", err)
+		return
+	}
 
 	fmt.Print("Ingrese el apellido del empleado: ")
-	fmt.Scan(&apellido)
+	apellido, err = reader.ReadString('\n')
+	if err != nil {
+		fmt.Print("Error al leer la entrada:", err)
+	}
 
 	fmt.Print("Ingrese la edad del empleado: ")
 	fmt.Scan(&edad)
