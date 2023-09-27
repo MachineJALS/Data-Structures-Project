@@ -1,11 +1,9 @@
 package main
 
 import (
-	"cmp"
 	"fmt"
 	"mymodule2/empleado"
 	"mymodule2/producto"
-	"slices"
 	"sort"
 	"time"
 )
@@ -109,24 +107,8 @@ func datosQuemados() {
 	}
 
 	listaProductos = append(listaProductos, producto1, producto3, producto2)
-	fmt.Printf("Productos:\n%v\n", listaProductos)
 
 	listaEmpleados = append(listaEmpleados, empleado1, empleado2)
-	fmt.Printf("Empleados:\n%v\n", listaEmpleados)
-
-	// Ordenar empleados por ID y apellido
-	slices.SortFunc(listaEmpleados, func(a, b empleado.Empleado) int { return a.Id - b.Id })
-	fmt.Printf("Empleados ordenados por ID:\n%v\n", listaEmpleados)
-
-	slices.SortFunc(listaEmpleados, func(a, b empleado.Empleado) int { return cmp.Compare(a.Apellido, b.Apellido) })
-	fmt.Printf("Empleados ordenados por apellido:\n%v\n", listaEmpleados)
-
-	// Encontrar y eliminar un empleado por apellido
-	indice := slices.IndexFunc(listaEmpleados, func(e empleado.Empleado) bool {
-		return e.Apellido == "Lorenzo"
-	})
-	listaEmpleados = slices.Delete(listaEmpleados, indice, (indice + 1))
-	fmt.Printf("Empleados después de eliminar a Lorenzo:\n%v\n", listaEmpleados)
 }
 
 func formatProductos(productos []producto.Producto) string {
